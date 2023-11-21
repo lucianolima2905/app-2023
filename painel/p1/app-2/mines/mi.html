@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+        }
+
+        .cell {
+            width: 100%;
+            padding-bottom: 100%;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #0045da;
+        }
+
+        .yellow {
+            background-color: rgba(255, 255, 0, 0);
+            background-image: url('https://cdn-icons-png.flaticon.com/512/148/148839.png');
+            background-size: cover;
+        }
+
+        #timer {
+            text-align: center;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        #message {
+            text-align: center;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="board" id="board"></div>
+    
+    <div id="timer">Validade: <span id="countdown"> 60</span></div>
+    <div id="message"></div>
+    
+    <script>
+        const board = document.getElementById("board");
+        const yellowInterval = 60000; // 60 segundos em milissegundos
+        let countdown = 60;
+
+        function createCell(x, y) {
+            const cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.dataset.x = x;
+            cell.dataset.y = y;
+            board.appendChild(cell);
+        }
+
+        function showMessage(message, duration) {
+            const messageElement = document.getElementById("message");
+            messageElement.textContent = message;
+            setTimeout(() => {
+                messageElement.textContent = "";
+                makeRandomCellsYellow();
+            }, duration);
+        }
+
+        function generateRandomStars() {
+            const cellElements = Array.from(document.querySelectorAll(".cell"));
+            const shuffledCells = cellElements.sort(() => 0.5 - Math.random());
+            const randomYellowCount = Math.floor(Math.random() * 2) + 3; // Entre 3 e 4 estrelas
+
+            for (let i = 0; i < randomYellowCount; i++) {
+                shuffledCells[i].classList.add("yellow");
+                shuffledCells[i].textContent = "";
+            }
+        }
+
+        function makeRandomCellsYellow() {
+            generateRandomStars();
+
+            setTimeout(() => {
+                const cellElements = Array.from(document.querySelectorAll(".cell"));
+                cellElements.forEach((cell) => {
+                    cell.classList.remove("yellow");
+                });
+
+                showMessage("Analisando...", 15000);
+            }, yellowInterval);
+
+            countdown = 60;
+            updateCountdown();
+        }
+
+        function updateCountdown() {
+            const countdownElement = document.getElementById("countdown");
+            countdownElement.textContent = countdown;
+            if (countdown > 0) {
+                countdown--;
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+
+        for (let x = 0; x < 5; x++) {
+            for (let y = 0; y < 5; y++) {
+                createCell(x, y);
+            }
+        }
+
+        makeRandomCellsYellow();
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.login-container {
+    background-color: #fff;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px #ccc;
+}
+
+/* Estilos para páginas de login e cadastro */
+.login-page {
+    background-image: url('img/fun.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.cadastro-page {
+    background-image: url('img/fun.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Estilos para o logotipo */
+.logo {
+    max-width: 100px; /* Defina o tamanho desejado para o logotipo */
+    display: block;
+    margin: 0 auto 20px; /* Ajuste o espaço entre o logotipo e o título */
+}
+
+
+/* Estilos para páginas de login e cadastro */
+.login-page {
+    background-image: url('img/fun.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.cadastro-page {
+    background-image: url('img/fun.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Estilos para o logotipo */
+.logo {
+    max-width: 50px; /* Defina o tamanho desejado para o logotipo, por exemplo, 50px */
+    display: block;
+    margin: 0 auto 20px; /* Ajuste o espaço entre o logotipo e o título */
+}

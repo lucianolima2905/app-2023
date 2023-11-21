@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"> <!-- Vincule o arquivo CSS externo -->
+</head>
+<body>
+    <header>
+        <a href="../index.html">
+            <img src="/img/logo.png" alt="Logo" style="width: auto; height: auto;">
+        </a>
+        <div class="buttons">
+            <button id="vip-button">
+                <img src="/img/clock.png" alt="Ícone VIP" style="max-width: 20px; margin-right: 5px;">
+                Seja VIP
+            </button>
+        </div>
+    </header>
+    <div class="container">
+        <iframe id="myIframe" src="/home/h1"></iframe>
+    </div>
+    <footer>
+        <a href="/home">
+            <img src="/img/home.png" alt="cone 1" title="Home">
+            <p>Home</p>
+        </a>
+        <a href="/contato">
+            <img src="/img/suport.png" alt="Ícone 2" title="Suport">
+            <p>Suport</p>
+        </a>
+        <a href="/painel">
+            <img src="/img/logoo.png" alt="Ícone 3" title="Hacker">
+            <p>Hacker</p>
+        </a>
+        <a href="/grupos">
+            <img src="/img/bet7k.png" alt="cone 4" title="Bet7k">
+            <p>Bet7k</p>
+        </a>
+        <a href="/perfil">
+            <img src="/img/user.png" alt="Ícone 5" title="Cassino">
+            <p>Cassino</p>
+        </a>
+    </footer>
+
+    <div class="notification" id="notification">
+        <span class="close-button" id="close-button" onclick="fecharNotificacao()">&times;</span> <!-- cone de fechar -->
+        <div class="notification-content" id="notification-content">
+            <img src="/img/pix.png" alt="Ícone Pix" style="width: 1em; height: 1em; margin-right: 0.5em; vertical-align: middle;">
+            <span id="notification-text"></span>
+        </div>
+    </div>
+
+    <!-- Inclua o áudio para notificação -->
+    <audio id="notification-sound">
+        <source src="/audio/notif.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Função para fechar a notificação
+        function fecharNotificacao() {
+            const notification = document.getElementById('notification');
+            notification.style.display = 'none';
+        }
+
+        // Função para gerar notificações aleatórias
+        function gerarNotificacaoAleatoria() {
+            const nomes = ["Joo", "Maria", "Pedro", "Ana", "Carlos"];
+            const sobrenomes = ["Silva", "Santos", "Oliveira", "Pereira", "Ferreira"];
+            const ganhos = Math.floor(Math.random() * 1000);
+            const jogos = ["Fortune Tiger", "Fortune Ox", "Fortune Rabbit"];
+            const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
+            const sobrenomeAleatorio = sobrenomes[Math.floor(Math.random() * sobrenomes.length)];
+            const jogoAleatorio = jogos[Math.floor(Math.random() * jogos.length)];
+
+            const notification = document.getElementById('notification');
+            const notificationContent = document.getElementById('notification-content');
+
+            notificationContent.innerHTML = `<img src="/img/pix.png" alt="Ícone Pix" style="width: 1em; height: 1em; margin-right: 0.5em; vertical-align: middle;">${nomeAleatorio} ${sobrenomeAleatorio} ganhou R$ ${ganhos} no jogo ${jogoAleatorio}`;
+            notification.style.display = 'block';
+
+            // Reproduzir o som de notificação
+            const notificationSound = document.getElementById('notification-sound');
+            notificationSound.play();
+
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 10000);
+        }
+
+        // Atualizar a hora a cada segundo
+        setInterval(atualizarHora, 1000);
+
+        // Gerar notificações aleatórias a cada 20 segundos
+        setInterval(gerarNotificacaoAleatoria, 20000);
+    </script>
+</body>
+</html>

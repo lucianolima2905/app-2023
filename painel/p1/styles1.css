@@ -1,0 +1,69 @@
+/* Estilos para o corpo da página */
+body {
+    background-image: url('caminho/para/sua/imagem-de-fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos para o contêiner do formulário */
+.container {
+    text-align: center;
+}
+
+/* Estilos para o formulário de login */
+.login-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para o form-group (contêiner do campo de entrada e ícone) */
+.form-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+/* Estilos para o ícone nos campos */
+.form-group i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+/* Estilos para campos de entrada de texto e botão */
+input[type="email"], input[type="password"], input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 30px; /* Deixa espaço para o ícone */
+    display: block;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para mensagens de erro */
+.error {
+    color: red;
+    margin-bottom: 10px;
+}

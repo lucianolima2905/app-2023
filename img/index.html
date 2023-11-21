@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Impede que a barra de rolagem vertical apareça */
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header img {
+            max-width: 100px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        header .buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        header .buttons button {
+            margin: 0 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            background-color: #FFD700; /* Amarelo escuro */
+        }
+
+        header .buttons #sair-button {
+            background-color: #FF0000; /* Vermelho */
+        }
+
+        header .buttons button img {
+            max-width: 20px;
+            margin-right: 5px;
+        }
+
+        .container {
+            padding: 50px 0; /* Aumente o espaço superior para coincidir com a altura do cabeçalho */
+            width: 100%;
+            height: calc(100% - 50px); /* 50px é a altura do rodapé */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+            display: none;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around; /* Alinhar os ícones igualmente espaçados */
+            align-items: center; /* Centralizar verticalmente */
+        }
+
+        footer a {
+            display: flex; /* Para manter os ícones como links */
+            flex-direction: column; /* Para alinhar o título abaixo do ícone */
+            align-items: center; /* Centralizar os elementos */
+            margin: 0 10px; /* Espaço entre os ícones */
+            text-decoration: none; /* Remover decoração de link */
+        }
+
+        footer img {
+            max-width: 40px;
+        }
+
+        footer p {
+            margin: 0; /* Remover margens padrão */
+            color: #fff; /* Cor do título */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html">
+            <img src="/img/logo.png" alt="Logo" style="width: auto; height: auto;">
+        </a>
+        <div class="buttons">
+            <a href="pagina_vip.html">
+                <button id="vip-button">
+                    <img src="https://i.pinimg.com/originals/6a/a2/8c/6aa28cbc80c1512c12e34891897d4be7.png" alt="Coroa" title="Título 1">SEJA VIP
+                </button>
+            </a>
+            <a href="pagina_sair.html">
+                <button id="sair-button">
+                    <img src="https://cdn-icons-png.flaticon.com/512/59/59399.png" alt="Sair" title="Título 2"> Sair
+                </button>
+            </a>
+        </div>
+    </header>
+    <div class="container">
+        <div id="loading">
+            Carregando...
+        </div>
+        <iframe id="myIframe" src="" onload="stopLoading()"></iframe>
+    </div>
+    <footer>
+        <a href="/painel/blog">
+            <img src="/img/suport.png" alt="Ícone 1" title="Home">
+            <p>Título 3</p>
+        </a>
+        <a href="/painel/index.html">
+            <img src="/img/logoo.png" alt="Ícone 2" title="Suport">
+            <p>Título 4</p>
+        </a>
+        <a href="/painel/index.html">
+            <img src="/img/logoo.png" alt="Ícone 3" title="Hacker">
+            <p>Título 5</p>
+        </a>
+        <a href="/link-para-icone-4.html">
+            <img src="/img/telegram.png" alt="Ícone 4" title="Telegram">
+            <p>Título 6</p>
+        </a>
+        <a href="/link-para-icone-5.html">
+            <img src="/img/user.png" alt="Ícone 5" title="Conta">
+            <p>Título 7</p>
+        </a>
+    </footer>
+
+    <script>
+        function stopLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        // Defina a URL desejada para o iframe
+        document.getElementById('myIframe').src = "http://apprenda.000.pe/painel/";
+
+        // Mostrar o "loading gif" enquanto o iframe carrega
+        document.getElementById('loading').style.display = 'block';
+    </script>
+</body>
+</html>
