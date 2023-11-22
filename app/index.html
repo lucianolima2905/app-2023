@@ -9,7 +9,11 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000;
+            background: url('https://img.freepik.com/fotos-premium/grupo-de-adultos-comemorando-a-vitoria-de-um-amigo-na-roleta_157927-13051.jpg?size=626&ext=jpg') no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
             color: #ddd;
         }
 
@@ -17,7 +21,7 @@
             max-width: 800px;
             margin: 50px auto;
             text-align: center;
-            background-color: #103800;
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
         }
@@ -27,19 +31,24 @@
         }
 
         .logo {
-            max-width: 70%; /* Reduzi a largura máxima para 70% */
+            max-width: 70%;
             height: auto;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 24px;
             margin-bottom: 20px;
         }
 
         .download-button {
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 18px;
+            padding: 15px 30px;
+            font-size: 24px;
             text-decoration: none;
             color: #fff;
-            background-color: #007bff;
-            border-radius: 5px;
+            background-color: #298b02;
+            border-radius: 8px;
             cursor: pointer;
         }
 
@@ -60,16 +69,16 @@
 <body>
     <div class="container">
         <img src="logo.png" alt="Logo" class="logo">
-        <h1>Download Page</h1>
-        <p>Clique no botão abaixo para baixar o arquivo:</p>
-        <a href="#" id="downloadButton" class="download-button">Download</a>
+        <h1>Descubra uma Nova Forma de Lucrar!</h1>
+        <p class="cta-text">Baixe agora o nosso aplicativo e comece a ganhar dinheiro extra enquanto se diverte:</p>
+        <a href="#" id="downloadButton" class="download-button">Download do App</a>
         <div id="countdown" class="countdown"></div>
     </div>
 
     <script>
         document.getElementById('downloadButton').addEventListener('click', function() {
             var link = document.createElement('a');
-            link.href = 'caminho/do/seu/arquivo.txt';
+            link.href = 'https://www.mediafire.com/file/6b5glgn6s5djvtw/base.apk/file';
             link.download = 'arquivo.txt';
 
             document.body.appendChild(link);
@@ -77,18 +86,18 @@
             document.body.removeChild(link);
 
             var countdownElement = document.getElementById('countdown');
-            var countdown = 10; // Inicializa o contador em 10 segundos
+            var countdown = 10;
 
             var countdownInterval = setInterval(function() {
                 countdownElement.textContent = 'Redirecionando em ' + countdown + ' segundos...';
 
                 if (countdown === 0) {
                     clearInterval(countdownInterval);
-                    window.location.href = 'caminho/para/sua/pagina-de-download.html';
+                    window.location.href = 'https://www.mediafire.com/file/6b5glgn6s5djvtw/base.apk/file';
                 } else {
                     countdown--;
                 }
-            }, 1000); // Atualiza a cada 1 segundo
+            }, 1000);
         });
     </script>
 </body>
