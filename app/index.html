@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #ddd;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .countdown {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+    <title>Download Page</title>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>Download Page</h1>
+        <p>Clique no botão abaixo para baixar o arquivo:</p>
+        <a href="#" id="downloadButton" class="download-button">Download</a>
+        <div id="countdown" class="countdown"></div>
+    </div>
+
+    <script>
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            var link = document.createElement('a');
+            link.href = 'https://www.mediafire.com/file/5u6rr9ss1zj2mh1/renda.apk/file';
+            link.download = 'arquivo.txt';
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            var countdownElement = document.getElementById('countdown');
+            var countdown = 10; // Inicializa o contador em 10 segundos
+
+            var countdownInterval = setInterval(function() {
+                countdownElement.textContent = 'Redirecionando em ' + countdown + ' segundos...';
+
+                if (countdown === 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = 'https://www.mediafire.com/file/5u6rr9ss1zj2mh1/renda.apk/file';
+                } else {
+                    countdown--;
+                }
+            }, 1000); // Atualiza a cada 1 segundo
+        });
+    </script>
+</body>
+</html>
