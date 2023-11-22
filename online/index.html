@@ -3,17 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Users Tracker</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Pop-up com Ícone para Fechar</title>
+    <style>
+        /* Estilos para o pop-up */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            max-width: 80vw; /* Largura máxima de 80% da largura da viewport */
+            max-height: 80vh; /* Altura máxima de 80% da altura da viewport */
+        }
+
+        /* Estilos para o ícone de fechar */
+        .close-icon {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+            width: 20px; /* Ajuste o tamanho conforme necessário */
+            height: 20px; /* Ajuste o tamanho conforme necessário */
+        }
+
+        /* Animação para o ícone de fechar */
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* Aplica a animação quando a classe 'fade-out' é adicionada */
+        .fade-out {
+            animation: fadeOut 0.5s ease;
+        }
+    </style>
 </head>
-<body>
-    <h1>Usuários Online: <span id="onlineUsers">0</span></h1>
-    <script src="main.js"></script>
+<body onload="openPopup()">
 
+    <!-- Conteúdo da sua página -->
 
-<!-- BEGIN: Powered by Supercounters.com -->
-<center>
-    <script type="text/javascript" src="https://usuariosonline.s12.com.br/uo-5CbDYx3aCWwcZb57-6-0.js"></script><br><a href="https://usuariosonline.s12.com.br/" target="_blank"><img src="https://usuariosonline.s12.com.br/selo/selo-uo.gif" alt="usuários online" border="0"></a>
+    <!-- Pop-up -->
+    <div id="popup" class="popup">
+        <img class="close-icon" src="https://freepngimg.com/thumb/alphabets/22-2-x-alphabet-png.png" alt="Ícone de Fechar" onclick="closePopup()">
+        <a href="https://chat.whatsapp.com/BJ8cTxrVevs4QGJklhDU7p">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX9GHyqeNttY1Mdx9cFym2exKP0CjjTWQ3K5hLvjQ96axd8iAds_QnzOmYjrUnf-vY-vM&usqp=CAU" alt="Descrição da Imagem" style="max-width: 100%; height: auto;">
+        </a>
+    </div>
 
+    <!-- Mais conteúdo da sua página -->
+
+    <script>
+        // Função para abrir o pop-up
+        function openPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        // Função para fechar o pop-up
+        function closePopup() {
+            var popup = document.getElementById('popup');
+            popup.classList.add('fade-out'); // Adiciona a classe para a animação de fade-out
+            setTimeout(function() {
+                popup.style.display = 'none';
+                popup.classList.remove('fade-out'); // Remove a classe após a animação
+            }, 500); // Tempo correspondente à duração da animação
+        }
+    </script>
 </body>
 </html>
