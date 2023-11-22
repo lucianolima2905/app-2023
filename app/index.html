@@ -27,7 +27,7 @@
         }
 
         .logo {
-            max-width: 100%;
+            max-width: 70%; /* Reduzi a largura máxima para 70% */
             height: auto;
             margin-bottom: 20px;
         }
@@ -69,7 +69,7 @@
     <script>
         document.getElementById('downloadButton').addEventListener('click', function() {
             var link = document.createElement('a');
-            link.href = 'https://www.mediafire.com/file/5u6rr9ss1zj2mh1/renda.apk/file';
+            link.href = 'caminho/do/seu/arquivo.txt';
             link.download = 'arquivo.txt';
 
             document.body.appendChild(link);
@@ -84,7 +84,7 @@
 
                 if (countdown === 0) {
                     clearInterval(countdownInterval);
-                    window.location.href = 'https://www.mediafire.com/file/5u6rr9ss1zj2mh1/renda.apk/file';
+                    window.location.href = 'caminho/para/sua/pagina-de-download.html';
                 } else {
                     countdown--;
                 }
