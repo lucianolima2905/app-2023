@@ -137,27 +137,25 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            padding: 10px;
-            background-color: #000000e8;
-            border: 1px solid #020101;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            max-width: 80vw; /* Largura máxima de 80% da largura da viewport */
-            max-height: 80vh; /* Altura máxima de 80% da altura da viewport */
+            max-width: 90vw; /* Largura máxima de 90% da largura da viewport */
+            max-height: 90vh; /* Altura máxima de 90% da altura da viewport */
             text-align: center; /* Centraliza o conteúdo */
-            display: flex; /* Usa o modelo de layout flexível */
-            flex-direction: column; /* Alinha os itens em uma coluna */
-            align-items: center; /* Centraliza os itens horizontalmente */
+            overflow: auto; /* Adiciona rolagem caso o conteúdo seja maior que a tela */
         }
 
         /* Estilos para o ícone de fechar */
         .close-icon {
             position: absolute;
-            top: 5px;
-            right: 5px;
+            top: 10px;
+            right: 10px;
             cursor: pointer;
-            width: 50px; /* Ajuste o tamanho conforme necessário */
-            height: 50px; /* Ajuste o tamanho conforme necessário */
+            width: 20px; /* Ajuste o tamanho conforme necessário */
+            height: 20px; /* Ajuste o tamanho conforme necessário */
         }
 
         /* Estilos para a imagem */
