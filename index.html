@@ -138,12 +138,16 @@
             left: 50%;
             transform: translate(-50%, -50%);
             padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ccc;
+            background-color: #000000e8;
+            border: 1px solid #020101;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             max-width: 80vw; /* Largura máxima de 80% da largura da viewport */
             max-height: 80vh; /* Altura máxima de 80% da altura da viewport */
+            text-align: center; /* Centraliza o conteúdo */
+            display: flex; /* Usa o modelo de layout flexível */
+            flex-direction: column; /* Alinha os itens em uma coluna */
+            align-items: center; /* Centraliza os itens horizontalmente */
         }
 
         /* Estilos para o ícone de fechar */
@@ -154,6 +158,13 @@
             cursor: pointer;
             width: 50px; /* Ajuste o tamanho conforme necessário */
             height: 50px; /* Ajuste o tamanho conforme necessário */
+        }
+
+        /* Estilos para a imagem */
+        .popup img {
+            max-width: 100%; /* Largura máxima de 100% da largura da popup */
+            height: auto; /* Mantém a proporção original da imagem */
+            margin-top: 10px; /* Espaçamento superior para separar o ícone de fechar da imagem */
         }
 
         /* Animação para o ícone de fechar */
@@ -181,7 +192,7 @@
     <div id="popup" class="popup">
         <img class="close-icon" src="https://freepngimg.com/thumb/alphabets/22-2-x-alphabet-png.png" alt="Ícone de Fechar" onclick="closePopup()">
         <a href="https://chat.whatsapp.com/BJ8cTxrVevs4QGJklhDU7p">
-            <img src="https://i.pinimg.com/736x/ee/1f/6b/ee1f6b40b25ee014b13fa3fd8b51647d.jpg" alt="Descrição da Imagem" style="max-width: 100%; height: auto;">
+            <img src="https://cdn.dfg.com.br/itemimages/989136907-fortune-tiger-vip-8O2T.webp" alt="Descrição da Imagem">
         </a>
     </div>
 
