@@ -251,7 +251,7 @@
 
     <script>
         function redirectToLogin() {
-            window.location.href = 'login';
+            window.location.href = 'login.html';
         }
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -268,7 +268,7 @@
                 .then(data => {
                     data.forEach(image => {
                         var imgElement = document.createElement("img");
-                        imgElement.src = "carrossel/" + image;
+                        imgElement.src = "carrossel" + image;
                         imgElement.alt = "Imagem do Carrossel";
                         var overlayDiv = document.createElement("div");
                         overlayDiv.className = "overlay";
