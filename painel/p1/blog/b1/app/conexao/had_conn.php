@@ -1,1 +1,0 @@
-<?php $host='localhost';   $user='root';   $senha='6CrwQCPb1Ur5aN';   $bd='rendaextra'; ?>
