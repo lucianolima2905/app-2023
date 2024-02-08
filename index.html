@@ -60,6 +60,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       margin-top: 20px;
     }
 
@@ -87,7 +88,7 @@
     }
 
     .horario .relogio {
-      margin-left: auto;
+      margin-right: 5px;
       font-size: 24px;
     }
 
@@ -106,37 +107,86 @@
     .horario-info {
       text-align: center;
       margin-bottom: 20px;
-      position: relative;
     }
 
-    .copiar-horarios {
+    .botao-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    .copiar-horarios, .entrar-app, .botao-verde {
       cursor: pointer;
       font-size: 24px;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      width: 300px;
+      padding: 15px;
+      border-radius: 30px;
+      background-color: #4CAF50; /* Cor de fundo do botão verde */
+      color: white;
+      border: none;
+      animation: pulse 1.5s infinite alternate; /* Animação de pulsação */
+      text-align: center;
+      text-decoration: none;
     }
 
-    .seta-copiar {
-      position: absolute;
-      top: -50px;
-      left: calc(50% - 20px);
-      animation: bounce 2s infinite;
+    .copiar-horarios img, .entrar-app img {
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
     }
 
-    @keyframes bounce {
+    .seta-clique {
+      width: 40px;
+      height: 40px;
+      background-image: url('https://image.flaticon.com/icons/png/512/66/66652.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      animation: moverSeta 1s infinite;
+      margin-left: 10px;
+    }
+
+    @keyframes moverSeta {
       0% {
-        transform: translateY(0);
+        transform: translateX(0);
       }
       50% {
-        transform: translateY(-20px);
+        transform: translateX(10px);
       }
       100% {
-        transform: translateY(0);
+        transform: translateX(0);
       }
     }
 
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Mídia query para dispositivos com largura de tela de até 600px (exemplo: smartphones) */
     @media only screen and (max-width: 600px) {
       .horario {
         width: 90%;
+      }
+      .horario-item img {
+        width: 80px;
+        height: 80px;
+      }
+      .copiar-horarios, .entrar-app, .botao-verde {
+        width: 200px;
       }
     }
   </style>
@@ -150,19 +200,31 @@
 
 <div class="content">
   <h2 style="text-align: center;">Bem-vindo ao meu site!</h2>
+  <div class="centralizado">
+    <p>Aqui está o conteúdo da sua página.</p>
+  </div>
+
   <div class="horario-info">
     <p>Por favor, tire um print ou copie os horários abaixo para referência.</p>
-    <button class="copiar-horarios" onclick="copiarHorarios()"><i class="fas fa-copy"></i><span class="seta-copiar">▼</span></button>
   </div>
+
   <div class="horario-container">
     <div class="horario-item">
-      <img src="https://via.placeholder.com/100" alt="Imagem de exemplo">
-      <div class="horario">
-        <ul id="horarioList">
-          <!-- Os horários serão gerados aqui pelo JavaScript -->
-        </ul>
-      </div>
+      <img src="https://static-00.iconduck.com/assets.00/copy-icon-849x1024-ff9zm8ol.png" alt="Copiar" />
+      <button class="copiar-horarios" onclick="copiarHorarios()">Copiar Horários</button>
     </div>
+    <div class="horario">
+      <ul id="horarioList">
+        <!-- Os horários serão gerados aqui pelo JavaScript -->
+      </ul>
+    </div>
+  </div>
+
+  <div class="botao-container">
+    <button class="entrar-app" onclick="redirecionarLogin()">
+      <img src="https://static-00.iconduck.com/assets.00/arrow-right-icon-512x512-hobrh6je.png" alt="Seta" class="seta-clique" />
+      Clique aqui para entrar no app
+    </button>
   </div>
 </div>
 
@@ -200,6 +262,12 @@
       var novoItem = document.createElement('li');
       novoItem.textContent = novoTempo;
 
+      // Adiciona o emoji de relógio ao lado do horário
+      var emojiRelogio = document.createElement('span');
+      emojiRelogio.textContent = '⏰';
+      emojiRelogio.className = 'relogio';
+      novoItem.appendChild(emojiRelogio);
+
       listaHorario.appendChild(novoItem);
       
       minutosAdiantados += 6; // Aumenta os minutos adiantados em 6 para o próximo horário
@@ -214,6 +282,11 @@
     }, function() {
       alert('Erro ao copiar os horários.');
     });
+  }
+
+  // Função para redirecionar para a página de login
+  function redirecionarLogin() {
+    window.location.href = 'pagina-de-login.html'; // Substitua 'pagina-de-login.html' pelo link correto da página de login
   }
 
   // Chamada para gerar os horários adiantados quando a página é carregada
