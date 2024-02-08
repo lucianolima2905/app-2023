@@ -1,341 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/favicon-196.png" sizes="196x196">
-    <title>Renda Extra com Jogos</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            color: #fff;
-            overflow-x: hidden;
-            animation: changeColor 10s infinite alternate;
-            background-color: rgb(0, 0, 0);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horário Adiantado Aleatório</title>
+  <!-- Inclua o link para a biblioteca Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-xseMwpO2u9nQDtiYKDqHlE3Cgdv8+EAmKwPVhCnkuBYBgGt6ijljGq/TbXBXz4Lh/wI3i65s0r4FdA2MO5BLLw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #011300; /* Cor de fundo da página */
+      color: #fff;
+    }
 
-        @keyframes changeColor {
-            0% {
-                background-color: #000000ec;
-            }
+    .splash-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #003308; /* Cor de fundo da tela de splash */
+      color: #fff; /* Cor do texto */
+    }
 
-            100% {
-                background-color: rgb(0, 0, 0);
-            }
-        }
+    .splash-screen h1 {
+      font-size: 48px;
+      animation: pulse 1s infinite alternate; /* Animação do texto */
+    }
 
-        .splash-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            z-index: 9999;
-            background-color: #000000;
-        }
+    @keyframes pulse {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.1);
+      }
+    }
 
-        .splash-content img {
-            max-width: 100%;
-            height: auto;
-        }
+    .content {
+      display: none;
+      padding: 20px;
+      background-color: #0e2c00; /* Cor de fundo do conteúdo */
+      color: #ffffff; /* Cor do texto */
+      animation: fade-in 1s ease-in; /* Animação de fade-in */
+    }
 
-        .main-container {
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
-        .main-content {
-            display: none;
-        }
+    .horario-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
 
-        .login-button {
-            padding: 15px 30px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #01ff70;
-            color: #000;
-            border: none;
-            border-radius: 25px;
-            box-shadow: 0 0 20px rgba(1, 255, 112, 0.5);
-            animation: radarPulse 2s infinite;
-        }
+    .horario {
+      width: 80%;
+      max-width: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: url('https://shotgun.live/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgradient-top-left.1252c861.png&w=1536&q=75') no-repeat center center;
+      background-size: cover;
+    }
 
-        .slider-container {
-            position: fixed;
-            top: 0;
-            margin-top: 15px;
-            left: 0;
-            width: 100%;
-            height: 80;
-            overflow: hidden;
-            background-color: rgba(0, 255, 0, 0.007);
-            text-align: center;
-            z-index: 999; /* Adjust the z-index as needed */
-        }
+    .horario ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
 
-        .slider img {
-            max-width: 80%;
-            height: 60%;
-            flex: 0 0 auto;
-        }
+    .horario li {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        @media only screen and (max-width: 768px) {
-            /* Estilo para dispositivos com largura de tela até 768 pixels */
+    .horario .relogio {
+      margin-left: auto;
+      font-size: 24px;
+    }
 
-            .slider img {
-                max-width: 100%;
-                height: auto;
-            }
-        }
+    .horario-item {
+      display: flex;
+      align-items: center;
+    }
 
-        .carousel-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            background-color: rgba(0, 255, 0, 0.007);
-            text-align: center;
-        }
+    .horario-item img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
 
-        .carousel-title {
-            color: #fff;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
+    .horario-info {
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
 
-        .carousel {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-            padding: 10px;
-            margin: 0;
-            position: relative;
-            animation: zigZag 10s linear infinite;
-        }
+    .copiar-horarios {
+      cursor: pointer;
+      font-size: 24px;
+      position: relative;
+    }
 
-        .carousel img {
-            max-width: 100%;
-            max-height: 80px;
-            margin: 0 10px;
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
+    .seta-copiar {
+      position: absolute;
+      top: -50px;
+      left: calc(50% - 20px);
+      animation: bounce 2s infinite;
+    }
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 0, 0, 0.007);
-            z-index: 2;
-        }
+    @keyframes bounce {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
 
-        .zoom-effect {
-            transform: scale(1.2);
-        }
-
-        .typing-container {
-            position: fixed;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            border-radius: 15px;
-            width: 80%;
-            overflow: hidden;
-        }
-
-        .typing-text {
-            color: #fff;
-            font-size: 16px;
-            white-space: nowrap;
-            overflow: hidden;
-            margin: 0;
-            border-radius: 5px;
-        }
-
-        @keyframes radarPulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 20px rgba(1, 255, 112, 0.5);
-            }
-
-            50% {
-                transform: scale(1.2);
-                box-shadow: 0 0 40px rgba(1, 255, 112, 0.5);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 20px rgba(1, 255, 112, 0.5);
-            }
-        }
-
-        @keyframes zigZag {
-            0% {
-                transform: translateX(0);
-            }
-
-            25% {
-                transform: translateX(25%);
-            }
-
-            50% {
-                transform: translateX(0);
-            }
-
-            75% {
-                transform: translateX(-25%);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-    </style>
+    @media only screen and (max-width: 600px) {
+      .horario {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <!-- Splash Screen -->
-    <div class="splash-container">
-        <div class="splash-content">
-            <img src="/assets/splash.gif" alt="Splash Image">
-        </div>
+<div class="splash-screen">
+  <h1>Meu Site</h1>
+  <p>Carregando...</p>
+</div>
+
+<div class="content">
+  <h2 style="text-align: center;">Bem-vindo ao meu site!</h2>
+  <div class="horario-info">
+    <p>Por favor, tire um print ou copie os horários abaixo para referência.</p>
+    <button class="copiar-horarios" onclick="copiarHorarios()"><i class="fas fa-copy"></i><span class="seta-copiar">▼</span></button>
+  </div>
+  <div class="horario-container">
+    <div class="horario-item">
+      <img src="https://via.placeholder.com/100" alt="Imagem de exemplo">
+      <div class="horario">
+        <ul id="horarioList">
+          <!-- Os horários serão gerados aqui pelo JavaScript -->
+        </ul>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Conteúdo Principal -->
-    <div class="main-container">
-        <div class="main-content">
- <br/>
- <br/>
- <br/>
- <br/>
-            <p>Explore formas de ganhar dinheiro através de jogos online e divirta-se ao mesmo tempo.</p>
-            <button class="login-button" onclick="redirectToLogin()">Ir para a Página de Login</button>
-        </div>
-    </div>
+<script>
+  // Função para adicionar zero à esquerda para números menores que 10
+  function addZero(num) {
+    return (num < 10 ? '0' : '') + num;
+  }
 
-    <!-- Slider com 4 imagens -->
-    <div class="slider-container">
-        <div class="slider">
-            <a href="https://go.aff.7k-partners.com/onp2sptp"><img src="slider/img4.png" alt="Imagem 4"></a>
-        </div>
-    </div>
+  // Função para obter o horário local do Brasil
+  function getHorarioBrasil() {
+    var dataAtual = new Date();
+    var fusoHorario = -3; // Fuso horário do Brasil (GMT-3)
+    var horaBrasil = dataAtual.getUTCHours() + fusoHorario;
+    var minutoBrasil = dataAtual.getUTCMinutes();
+    return { hora: horaBrasil, minuto: minutoBrasil };
+  }
 
-    <!-- Carrossel de Imagens -->
-    <div class="carousel-container">
-        <div class="carousel-title">Ganhos dos Jogadores</div>
-        <div class="carousel" id="imageCarousel"></div>
-    </div>
+  // Função para gerar os horários adiantados
+  function gerarHorariosAdiantados() {
+    var listaHorario = document.getElementById('horarioList');
+    var horarioBrasil = getHorarioBrasil();
+    var minutosAdiantados = 6; // Inicia com 6 minutos adiantados
 
-    <!-- Texto Digitado -->
-    <div class="typing-container" id="typingContainer" style="display:none;">
-        <div class="typing-text" id="typingText"></div>
-    </div>
+    for (var i = 0; i < 5; i++) { // Gerar 5 horários adiantados
+      var novoMinuto = horarioBrasil.minuto + minutosAdiantados;
 
-    <script>
-        function redirectToLogin() {
-            window.location.href = 'login';
-        }
+      // Verifica se ultrapassou 60 minutos
+      if (novoMinuto >= 60) {
+        novoMinuto -= 60;
+      }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            setTimeout(function () {
-                document.querySelector(".splash-container").style.display = "none";
-                document.querySelector(".main-content").style.display = "block";
-            }, 4000);
+      var novoTempo = addZero(horarioBrasil.hora) + ':' + addZero(novoMinuto);
 
-            // Carregar todas as imagens do diretório "carrossel"
-            var carouselContainer = document.getElementById("imageCarousel");
+      var novoItem = document.createElement('li');
+      novoItem.textContent = novoTempo;
 
-            fetch("get_images.php") // Substitua pelo caminho real do seu script PHP
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(image => {
-                        var imgElement = document.createElement("img");
-                        imgElement.src = "carrossel" + image;
-                        imgElement.alt = "Imagem do Carrossel";
-                        var overlayDiv = document.createElement("div");
-                        overlayDiv.className = "overlay";
-                        imgElement.classList.add("zoom-effect");
-                        carouselContainer.appendChild(overlayDiv);
-                        carouselContainer.appendChild(imgElement);
-                    });
+      listaHorario.appendChild(novoItem);
+      
+      minutosAdiantados += 6; // Aumenta os minutos adiantados em 6 para o próximo horário
+    }
+  }
 
-                    // Adicionar evento de zoom nas imagens
-                    var images = document.querySelectorAll('.carousel img');
-                    images.forEach(img => {
-                        img.addEventListener('transitionend', () => {
-                            img.classList.remove('zoom-effect');
-                        });
-                    });
+  // Função para copiar os horários
+  function copiarHorarios() {
+    var horarios = document.getElementById('horarioList').innerText;
+    navigator.clipboard.writeText(horarios).then(function() {
+      alert('Os horários foram copiados para a área de transferência!');
+    }, function() {
+      alert('Erro ao copiar os horários.');
+    });
+  }
 
-                    // Adicionar evento para aplicar zoom quando passar pela div no meio do carrossel
-                    carouselContainer.addEventListener('scroll', function () {
-                        images.forEach(img => {
-                            const rect = img.getBoundingClientRect();
-                            const containerRect = carouselContainer.getBoundingClientRect();
-                            const midpoint = containerRect.width / 2;
+  // Chamada para gerar os horários adiantados quando a página é carregada
+  gerarHorariosAdiantados();
 
-                            if (rect.left < midpoint && rect.right > midpoint) {
-                                img.classList.add('zoom-effect');
-                            } else {
-                                img.classList.remove('zoom-effect');
-                            }
-                        });
-                    });
-
-                    // Adicionar evento para reiniciar o carrossel quando chegar ao final da tela
-                    carouselContainer.addEventListener('animationiteration', function () {
-                        carouselContainer.scrollLeft = 0;
-                    });
-                })
-                .catch(error => console.error("Erro ao carregar imagens do carrossel:", error));
-        });
-    </script>
-
-    <!-- Slick Carousel JavaScript CDN -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.8.1/slick.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('.slider').slick({
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                responsive: [{
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 2
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1
-                        }
-                    }
-                ]
-            });
-        });
-    </script>
+  // Remover a tela de splash após 3 segundos e exibir o conteúdo
+  setTimeout(function () {
+    document.querySelector('.splash-screen').style.display = 'none';
+    document.querySelector('.content').style.display = 'block';
+  }, 3000); // 3000 milissegundos = 3 segundos
+</script>
 
 </body>
-
 </html>
